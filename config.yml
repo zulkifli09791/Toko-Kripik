@@ -1,0 +1,19 @@
+- title: Ikan Asin Pedas
+  url: /produk/ikan-asin-pedas.html
+  featured_image_path: /assets/images/ikan-pedas.jpg
+  price: 25000
+  rating: 4.8
+  review: 87
+  stars: 5
+  wa_number: "6281234567890" # Ganti dengan nomor WA kamu
+  wa_message: "Halo, saya tertarik dengan Ikan Asin Pedas. Apakah masih tersedia?"
+
+- title: Ikan Asin Original
+  url: /produk/ikan-asin-original.html
+  featured_image_path: /assets/images/ikan-original.jpg
+  price: 20000
+  rating: 4.5
+  review: 102
+  stars: 4
+  wa_number: "6281234567890"
+  wa_message: "Halo, saya ingin pesan Ikan Asin Original. Apakah ready stock?"

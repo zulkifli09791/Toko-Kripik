@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Produk Kami</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .navbar {
+      background-color: #007bff;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .product {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 250px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .product-price {
+      color: #28a745;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .wa-button {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #25d366;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .wa-button:hover {
+      background-color: #1ebe5d;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    .sosial-icon a {
+      color: white;
+      font-size: 24px;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html"><img src="img/home.jpeg" alt="Home" width="24">Beranda</a>
+    <a href="tentang.html"><img src="img/about.jpeg" alt="Tentang" width="24">Tentang</a>
+    <a href="produk.html"><img src="img/proyek.jpeg" alt="Produk" width="24">Produk</a>
+    <a href="kontak.html"><img src="img/kontak.jpeg" alt="Kontak" width="24">Kontak</a>
+  </div>
+
+  <!-- Produk -->
+  <div class="container">
+    <!-- Produk 1 -->
+    <div class="product">
+      <img src="img/OIP (1).jpeg" alt="Produk 1">
+      <div class="product-name">Kripik Pisang Cavendish - Original</div>
+      <div class="product-price">Rp15.000</div>
+      <a class="wa-button" href="https://wa.me/6282196809592?text=Halo%20saya%20mau%20pesan%20Produk%20A" target="_blank">
+        Pesan via WhatsApp
+      </a>
+    </div>
+
+    <!-- Produk 2 -->
+    <div class="product">
+      <img src="img/OIP.jpeg" alt="Produk 2">
+      <div class="product-name">Kripik Pisang Cavendish - Balado</div>
+      <div class="product-price">Rp15.000</div>
+      <a class="wa-button" href="https://wa.me/6282196809592?text=Halo%20saya%20mau%20pesan%20Produk%20B" target="_blank">
+        Pesan via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Hubungi Kami:</p>
+    <div class="sosial-icon">
+      <a href="https://wa.me/6282196809592"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://instagram.com/namatoko"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p style="margin-top: 10px;">&copy; 2025 Toko Online - Pisang Cavendish.</p>
+  </footer>
+
+</body>
+</html>
