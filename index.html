@@ -14,41 +14,63 @@
     /* Navbar */
     .navbar {
       background-color: #007bff;
-      padding: 15px;
+      padding: 10px 20px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 30px;
       flex-wrap: wrap;
     }
 
-    .navbar a {
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      margin-right: 20px;
+      display: none; /* Tampilkan di layar kecil saja */
+    }
+
+    .menu-items a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-      display: flex;
+      margin-right: 20px;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .navbar a:hover {
-      text-decoration: underline;
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
     }
 
-    /* Pamflet Gambar */
-    .pamflet-container {
-      max-width: 1080px;
-      margin: 30px auto;
-      text-align: center;
-      background-color: white;
-      padding: 15px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    .navbar-right a {
+      color: white;
+      text-decoration: none;
     }
 
-    .pamflet-container img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
+    /* Responsif untuk layar kecil */
+    @media screen and (max-width: 600px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu-items {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      .menu-items.show {
+        display: flex;
+      }
     }
 
     /* Footer */
@@ -103,10 +125,18 @@
 
   <!-- Navbar -->
   <div class="navbar">
-    <a href="index.html"><img src="img/home.jpeg" alt="Home" width="24">Beranda</a>
-    <a href="tentang.html"><img src="img/about.jpeg" alt="Tentang" width="24">Tentang</a>
-    <a href="produk.html"><img src="img/proyek.jpeg" alt="Produk" width="24">Produk</a>
-    <a href="kontak.html"><img src="img/kontak.jpeg" alt="Kontak" width="24">Kontak</a>
+    <div class="navbar-left">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <div class="menu-items" id="menuItems">
+        <a href="index.html"><img src="img/home.jpeg" alt="Home" width="24">Beranda</a>
+        <a href="tentang.html"><img src="img/about.jpeg" alt="Tentang" width="24">Tentang</a>
+        <a href="produk.html"><img src="img/proyek.jpeg" alt="Produk" width="24">Produk</a>
+        <a href="kontak.html"><img src="img/kontak.jpeg" alt="Kontak" width="24">Kontak</a>
+      </div>
+    </div>
+    <div class="navbar-right">
+      <a href="index.html" title="Kembali ke Beranda"><i class="fas fa-home" style="font-size: 24px; color: white;"></i></a>
+    </div>
   </div>
 
   <!-- Isi Beranda -->
@@ -129,6 +159,13 @@
     </div>
     <p style="margin-top: 10px;">&copy; 2025 Toko Online - Pisang Cavendish.</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menuItems');
+      menu.classList.toggle('show');
+    }
+  </script>
 
 </body>
 </html>
