@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Produk Kami</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,24 +14,53 @@
 
     .navbar {
       background-color: #007bff;
-      padding: 15px;
+      padding: 10px 20px;
       display: flex;
-      justify-content: center;
-      gap: 30px;
+      justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
-    .navbar a {
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .menu-items a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .navbar a:hover {
+    .menu-items a:hover {
       text-decoration: underline;
+    }
+
+    .navbar-right a {
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
     }
 
     .container {
@@ -40,6 +70,7 @@
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
+      padding: 0 15px;
     }
 
     .product {
@@ -95,26 +126,82 @@
 
     .sosial-icon a {
       color: white;
-      font-size: 24px;
+      font-size: 20px;
       margin: 0 10px;
       text-decoration: none;
     }
+
+    /* Responsive menu */
+    @media screen and (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu-items {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        animation: slideDown 0.4s ease-out forwards;
+      }
+
+      .menu-items.show {
+        display: flex;
+      }
+
+      .menu-items.hide {
+        animation: slideUp 0.3s ease-in forwards;
+      }
+
+      .navbar {
+        align-items: flex-start;
+      }
+    }
+
+    /* Animasi */
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
   <!-- Navbar -->
   <div class="navbar">
-    <a href="index.html"><img src="img/home.jpeg" alt="Home" width="24">Beranda</a>
-    <a href="tentang.html"><img src="img/about.jpeg" alt="Tentang" width="24">Tentang</a>
-    <a href="produk.html"><img src="img/proyek.jpeg" alt="Produk" width="24">Produk</a>
-    <a href="kontak.html"><img src="img/kontak.jpeg" alt="Kontak" width="24">Kontak</a>
+    <div class="navbar-left">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <div class="menu-items" id="menuItems">
+        <a href="index.html"><img src="img/home.jpeg" alt="Home" width="20">Beranda</a>
+        <a href="tentang.html"><img src="img/about.jpeg" alt="Tentang" width="20">Tentang</a>
+        <a href="produk.html"><img src="img/proyek.jpeg" alt="Produk" width="20">Produk</a>
+        <a href="kontak.html"><img src="img/kontak.jpeg" alt="Kontak" width="20">Kontak</a>
+      </div>
+    </div>
+    <div class="navbar-right">
+      <a href="#"><i class="fas fa-home"></i></a>
+    </div>
   </div>
 
   <!-- Produk -->
   <div class="container">
-    <!-- Produk 1 -->
     <div class="product">
       <img src="img/OIP (1).jpeg" alt="Kripik Pisang Cavendish - Original">
       <div class="product-name">Kripik Pisang Cavendish - Original</div>
@@ -124,7 +211,6 @@
       </a>
     </div>
 
-    <!-- Produk 2 -->
     <div class="product">
       <img src="img/OIP.jpeg" alt="Kripik Pisang Cavendish - Balado">
       <div class="product-name">Kripik Pisang Cavendish - Balado</div>
@@ -139,11 +225,30 @@
   <footer>
     <p>Hubungi Kami:</p>
     <div class="sosial-icon">
-      <a href="https://wa.me/6282196809592"><i class="fab fa-whatsapp"></i>WhatsApp</a>
-      <a href="https://instagram.com/zulkifli_145"><i class="fab fa-instagram">Instagram</i></a>
+      <a href="https://wa.me/6282196809592"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://instagram.com/zulkifli_145"><i class="fab fa-instagram"></i> Instagram</a>
     </div>
     <p style="margin-top: 10px;">&copy; 2025 Toko Online - Pisang Cavendish.</p>
   </footer>
 
+  <script>
+    let isMenuVisible = false;
+
+    function toggleMenu() {
+      const menu = document.getElementById('menuItems');
+      if (isMenuVisible) {
+        menu.classList.remove('show');
+        menu.classList.add('hide');
+        setTimeout(() => {
+          menu.style.display = 'none';
+          menu.classList.remove('hide');
+        }, 300); // waktu sesuai animasi slideUp
+      } else {
+        menu.style.display = 'flex';
+        menu.classList.add('show');
+      }
+      isMenuVisible = !isMenuVisible;
+    }
+  </script>
 </body>
 </html>
