@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Produk Kami</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -36,6 +36,7 @@
       font-size: 26px;
       cursor: pointer;
       display: none;
+      margin-right: 10px;
     }
 
     .menu-items {
@@ -44,23 +45,29 @@
       gap: 20px;
     }
 
-    .menu-items a {
+    .menu-items a,
+    .navbar-right a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       display: flex;
       align-items: center;
       gap: 6px;
+      font-size: 16px;
     }
 
-    .menu-items a:hover {
+    .menu-items a:hover,
+    .navbar-right a:hover {
       text-decoration: underline;
     }
 
+    .navbar-right {
+      display: flex;
+      align-items: center;
+    }
+
     .navbar-right a {
-      color: white;
-      font-size: 20px;
-      text-decoration: none;
+      margin-left: 20px;
     }
 
     .container {
@@ -156,6 +163,17 @@
       .navbar {
         align-items: flex-start;
       }
+
+      .navbar-right {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .navbar-right a {
+        margin-left: 0;
+        margin-right: 20px;
+      }
     }
 
     /* Animasi */
@@ -196,14 +214,15 @@
       </div>
     </div>
     <div class="navbar-right">
-      <a href="#"><i class="fas fa-home"></i></a>
+      <a href="index.html"><img src="img/home.jpeg" alt="Home" width="20">Beranda</a>
+      <a href="tentang.html"><img src="img/about.jpeg" alt="Tentang" width="20">Tentang</a>
     </div>
   </div>
 
   <!-- Produk -->
   <div class="container">
     <div class="product">
-      <img src="img/OIP (1).jpeg" alt="Kripik Pisang Cavendish - Original">
+      <img src="img/OIP (1).jpeg" alt="Kripik Pisang Cavendish - Original" />
       <div class="product-name">Kripik Pisang Cavendish - Original</div>
       <div class="product-price">Rp15.000</div>
       <a class="wa-button" href="https://wa.me/6282196809592?text=Halo%20saya%20mau%20pesan%20Produk%20A" target="_blank">
@@ -212,7 +231,7 @@
     </div>
 
     <div class="product">
-      <img src="img/OIP.jpeg" alt="Kripik Pisang Cavendish - Balado">
+      <img src="img/OIP.jpeg" alt="Kripik Pisang Cavendish - Balado" />
       <div class="product-name">Kripik Pisang Cavendish - Balado</div>
       <div class="product-price">Rp15.000</div>
       <a class="wa-button" href="https://wa.me/6282196809592?text=Halo%20saya%20mau%20pesan%20Produk%20B" target="_blank">
@@ -242,7 +261,7 @@
         setTimeout(() => {
           menu.style.display = 'none';
           menu.classList.remove('hide');
-        }, 300); // waktu sesuai animasi slideUp
+        }, 300);
       } else {
         menu.style.display = 'flex';
         menu.classList.add('show');
@@ -250,5 +269,6 @@
       isMenuVisible = !isMenuVisible;
     }
   </script>
+
 </body>
 </html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kontak Kami</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontak Kami - Pisang Cavendish</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,28 +11,108 @@
       background-color: #f0f0f0;
     }
 
+    /* Navbar utama */
     .navbar {
       background-color: #007bff;
-      padding: 15px;
+      padding: 10px 20px;
       display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      color: white;
     }
 
-    .navbar a {
+    /* Bagian kiri navbar: hamburger + nama halaman */
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 20px;
+      user-select: none;
+    }
+
+    .active-page-name {
+      margin-top: -3px; /* naikin teks sedikit */
+      font-size: 16px;
+    }
+
+    /* Tombol hamburger */
+    .menu-toggle {
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    /* Menu navigasi utama */
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar ul li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       display: flex;
       align-items: center;
       gap: 8px;
+      transition: text-decoration 0.3s;
     }
 
-    .navbar a:hover {
+    .navbar ul li a:hover {
       text-decoration: underline;
     }
 
+    /* Gambar ikon di menu */
+    .navbar ul li a img {
+      width: 24px;
+      height: auto;
+    }
+
+    /* Responsive: layar kecil */
+    @media screen and (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .navbar ul {
+        position: absolute;
+        top: 56px; /* di bawah navbar */
+        left: 0;
+        right: 0;
+        background-color: #007bff;
+        flex-direction: column;
+        gap: 0;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 10;
+      }
+
+      .navbar ul.show {
+        max-height: 500px; /* cukup besar untuk semua item */
+      }
+
+      .navbar ul li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .navbar ul li a {
+        padding: 15px 20px;
+        justify-content: flex-start;
+      }
+    }
+
+    /* Konten kontak */
     .kontak-container {
       max-width: 600px;
       margin: 40px auto;
@@ -50,6 +130,7 @@
       margin: 8px 0;
     }
 
+    /* Footer */
     footer {
       background-color: #333;
       color: white;
@@ -63,6 +144,13 @@
       font-size: 24px;
       margin: 0 10px;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sosial-icon a:hover {
+      color: #1ecf65;
     }
   </style>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -70,17 +158,23 @@
 <body>
 
   <!-- Navbar -->
-  <div class="navbar">
-    <a href="index.html"><img src="img/home.jpeg" alt="Home" width="24">Beranda</a>
-    <a href="tentang.html"><img src="img/about.jpeg" alt="Tentang" width="24">Tentang</a>
-    <a href="produk.html"><img src="img/proyek.jpeg" alt="Produk" width="24">Produk</a>
-    <a href="kontak.html"><img src="img/kontak.jpeg" alt="Kontak" width="24">Kontak</a>
-  </div>
+  <nav class="navbar">
+    <div class="logo">
+      <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
+      <span class="active-page-name" id="activePage">Kontak</span>
+    </div>
+    <ul id="navLinks">
+      <li><a href="index.html"><img src="img/home.jpeg" alt="Home Icon" />Beranda</a></li>
+      <li><a href="tentang.html"><img src="img/about.jpeg" alt="Tentang Icon" />Tentang</a></li>
+      <li><a href="produk.html"><img src="img/proyek.jpeg" alt="Produk Icon" />Produk</a></li>
+      <li><a href="kontak.html"><img src="img/kontak.jpeg" alt="Kontak Icon" />Kontak</a></li>
+    </ul>
+  </nav>
 
   <!-- Konten -->
   <div class="kontak-container">
     <h2>Hubungi Kami</h2>
-    <p><strong>WhatsApp:</strong> <a href="https://wa.me/6282196809592">+62 8821-9680-9592</a></p>
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/6282196809592" target="_blank">+62 8821-9680-9592</a></p>
     <p><strong>Email:</strong> <a href="mailto:tokoonline@example.com">tokoonline@example.com</a></p>
     <p><strong>Instagram:</strong> <a href="https://instagram.com/zulkifli_145" target="_blank">@namatoko</a></p>
     <p><strong>Alamat:</strong> Jl. Contoh No. 123, Kota Contoh, Indonesia</p>
@@ -90,11 +184,18 @@
   <footer>
     <p>Hubungi Kami:</p>
     <div class="sosial-icon">
-      <a href="https://wa.me/6281234567890"><i class="fab fa-whatsapp"></i>WhatsApp</a>
-      <a href="https://instagram.com/zulkifli_145"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="https://wa.me/6281234567890" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+      <a href="https://instagram.com/zulkifli_145" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
     </div>
     <p style="margin-top: 10px;">&copy; 2025 Toko Online - Pisang Cavendish.</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('show');
+    }
+  </script>
 
 </body>
 </html>
