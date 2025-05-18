@@ -1,40 +1,118 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beranda - Pisang Cavendish</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       background-color: #f4f4f4;
+      overflow-x: hidden;
     }
 
-    /* Navbar */
-        .navbar {
+    /* Navbar container */
+    .navbar {
       background-color: #007bff;
-      padding: 15px;
+      padding: 10px 20px;
       display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
     }
 
-    .navbar a {
+    .logo {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .menu {
+      display: flex;
+      gap: 25px;
+    }
+
+    .menu a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .navbar a:hover {
+    .menu a:hover {
       text-decoration: underline;
     }
 
-    /* Footer */
+    /* Responsive menu (mobile) */
+    @media screen and (max-width: 700px) {
+      .menu {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #007bff;
+        width: 100%;
+        display: none;
+        animation: slideIn 0.3s ease-in-out forwards;
+        z-index: 10;
+      }
+
+      .menu.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .active-page-name {
+        color: white;
+        font-size: 16px;
+        margin-left: 10px;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .pamflet-container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 15px;
+      text-align: center;
+    }
+
+    .pamflet-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
     footer {
       background-color: #333;
       color: white;
@@ -47,6 +125,8 @@
       display: inline-flex;
       gap: 20px;
       margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .sosial-icon a {
@@ -58,27 +138,9 @@
     .sosial-icon a:hover {
       color: #1ecf65;
     }
-
-    /* Responsive */
-    @media screen and (max-width: 600px) {
-      .navbar {
-        flex-direction: column;
-        gap: 15px;
-      }
-    }
-
-        footer {
-      background-color: #333;
-      color: white;
-    }
-    .sosial-icon a {
-      color: white;
-      font-size: 24px;
-    }
-
   </style>
 
-  <!-- Font Awesome CDN -->
+  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
@@ -86,17 +148,23 @@
 
   <!-- Navbar -->
   <div class="navbar">
-    <a href="index.html"><img src="img/home.jpeg" alt="Home" width="24">Beranda</a>
-    <a href="tentang.html"><img src="img/about.jpeg" alt="Tentang" width="24">Tentang</a>
-    <a href="produk.html"><img src="img/proyek.jpeg" alt="Produk" width="24">Produk</a>
-    <a href="kontak.html"><img src="img/kontak.jpeg" alt="Kontak" width="24">Kontak</a>
+    <div class="logo">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <span class="active-page-name" id="activePage">Beranda</span>
+    </div>
+    <div class="menu" id="menu">
+      <a href="index.html" onclick="setActivePage('Beranda')"><img src="img/home.jpeg" alt="Home" width="20">Beranda</a>
+      <a href="tentang.html" onclick="setActivePage('Tentang')"><img src="img/about.jpeg" alt="Tentang" width="20">Tentang</a>
+      <a href="produk.html" onclick="setActivePage('Produk')"><img src="img/proyek.jpeg" alt="Produk" width="20">Produk</a>
+      <a href="kontak.html" onclick="setActivePage('Kontak')"><img src="img/kontak.jpeg" alt="Kontak" width="20">Kontak</a>
+    </div>
   </div>
 
-  <!-- Isi Beranda -->
+  <!-- Konten -->
   <div class="pamflet-container">
     <h2>Selamat Datang di Toko Kami!</h2>
-    <p>Kami menyediakan berbagai produk dari Pisang Cavendish berkualitas untuk kebutuhan Anda. Cek Manfaat dari mengonsumsi Pisang Cavendish!</p>
-    <img src="img/Gambar WhatsApp 2025-05-17 pukul 14.38.08_0b0574fa.jpg" alt="Pamflet Promo" width="1080" height="1920">
+    <p>Kami menyediakan berbagai produk dari Pisang Cavendish berkualitas untuk kebutuhan Anda. Cek manfaat dari mengonsumsi Pisang Cavendish!</p>
+    <img src="img/Gambar WhatsApp 2025-05-17 pukul 14.38.08_0b0574fa.jpg" alt="Pamflet Promo">
   </div>
 
   <!-- Footer -->
@@ -104,14 +172,34 @@
     <p>Hubungi Kami:</p>
     <div class="sosial-icon">
       <a href="https://wa.me/6281234567890" target="_blank" title="WhatsApp">
-        <i class="fab fa-whatsapp"></i>WhatsApp
+        <i class="fab fa-whatsapp"></i> WhatsApp
       </a>
       <a href="https://instagram.com/zulkifli_145" target="_blank" title="Instagram">
-        <i class="fab fa-instagram"></i>Instagram
+        <i class="fab fa-instagram"></i> Instagram
       </a>
     </div>
     <p style="margin-top: 10px;">&copy; 2025 Toko Online - Pisang Cavendish.</p>
   </footer>
 
+  <!-- JavaScript -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("show");
+    }
+
+    function setActivePage(page) {
+      document.getElementById("activePage").textContent = page;
+    }
+
+    // Deteksi halaman aktif dari URL otomatis
+    window.onload = function () {
+      const path = window.location.pathname;
+      if (path.includes("tentang")) setActivePage("Tentang");
+      else if (path.includes("produk")) setActivePage("Produk");
+      else if (path.includes("kontak")) setActivePage("Kontak");
+      else setActivePage("Beranda");
+    };
+  </script>
 </body>
 </html>
