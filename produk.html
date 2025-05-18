@@ -16,58 +16,100 @@
       background-color: #007bff;
       padding: 10px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      justify-content: space-between;
+      position: relative;
+      color: white;
     }
 
-    .navbar-left {
+    /* Bagian kiri navbar: hamburger + nama halaman */
+    .navbar .logo {
       display: flex;
       align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 20px;
+      user-select: none;
     }
 
+    .active-page-name {
+      margin-top: -3px; /* naikin teks sedikit */
+      font-size: 16px;
+    }
+
+    /* Tombol hamburger */
     .menu-toggle {
+      font-size: 28px;
       background: none;
       border: none;
       color: white;
-      font-size: 26px;
       cursor: pointer;
-      display: none;
-      margin-right: 10px;
+      padding: 0;
+      line-height: 1;
     }
 
-    .menu-items {
+    /* Menu navigasi utama */
+    .navbar ul {
+      list-style: none;
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
     }
 
-    .menu-items a,
-    .navbar-right a {
+    .navbar ul li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 16px;
+      gap: 8px;
+      transition: text-decoration 0.3s;
     }
 
-    .menu-items a:hover,
-    .navbar-right a:hover {
+    .navbar ul li a:hover {
       text-decoration: underline;
     }
 
-    .navbar-right {
-      display: flex;
-      align-items: center;
+    /* Gambar ikon di menu */
+    .navbar ul li a img {
+      width: 24px;
+      height: auto;
     }
 
-    .navbar-right a {
-      margin-left: 20px;
+    /* Responsive: layar kecil */
+    @media screen and (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .navbar ul {
+        position: absolute;
+        top: 56px; /* di bawah navbar */
+        left: 0;
+        right: 0;
+        background-color: #007bff;
+        flex-direction: column;
+        gap: 0;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 10;
+      }
+
+      .navbar ul.show {
+        max-height: 500px; /* cukup besar untuk semua item */
+      }
+
+      .navbar ul li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .navbar ul li a {
+        padding: 15px 20px;
+        justify-content: flex-start;
+      }
     }
 
     .container {
@@ -203,21 +245,18 @@
 <body>
 
   <!-- Navbar -->
-  <div class="navbar">
-    <div class="navbar-left">
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <div class="menu-items" id="menuItems">
-        <a href="index.html"><img src="img/home.jpeg" alt="Home" width="20">Beranda</a>
-        <a href="tentang.html"><img src="img/about.jpeg" alt="Tentang" width="20">Tentang</a>
-        <a href="produk.html"><img src="img/proyek.jpeg" alt="Produk" width="20">Produk</a>
-        <a href="kontak.html"><img src="img/kontak.jpeg" alt="Kontak" width="20">Kontak</a>
-      </div>
+  <nav class="navbar">
+    <div class="logo">
+      <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
+      <span class="active-page-name" id="activePage">Produk</span>
     </div>
-    <div class="navbar-right">
-      <a href="index.html"><img src="img/home.jpeg" alt="Home" width="20">Beranda</a>
-      <a href="tentang.html"><img src="img/about.jpeg" alt="Tentang" width="20">Tentang</a>
-    </div>
-  </div>
+    <ul id="navLinks">
+      <li><a href="index.html"><img src="img/home.jpeg" alt="Home Icon" />Beranda</a></li>
+      <li><a href="tentang.html"><img src="img/about.jpeg" alt="Tentang Icon" />Tentang</a></li>
+      <li><a href="produk.html"><img src="img/proyek.jpeg" alt="Produk Icon" />Produk</a></li>
+      <li><a href="kontak.html"><img src="img/kontak.jpeg" alt="Kontak Icon" />Kontak</a></li>
+    </ul>
+  </nav>
 
   <!-- Produk -->
   <div class="container">
