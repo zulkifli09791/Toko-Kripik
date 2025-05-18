@@ -238,22 +238,9 @@
   </footer>
 
   <script>
-    let isMenuVisible = false;
-
     function toggleMenu() {
-      const menu = document.getElementById('menuItems');
-      if (isMenuVisible) {
-        menu.classList.remove('show');
-        menu.classList.add('hide');
-        setTimeout(() => {
-          menu.style.display = 'none';
-          menu.classList.remove('hide');
-        }, 300);
-      } else {
-        menu.style.display = 'flex';
-        menu.classList.add('show');
-      }
-      isMenuVisible = !isMenuVisible;
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('show');
     }
   </script>
 </body>
